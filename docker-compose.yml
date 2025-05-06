@@ -1,0 +1,20 @@
+
+version: '3.8'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # Root password
+      MYSQL_DATABASE: ecommjava  # Database to be created
+      MYSQL_USER: user  # MySQL username
+      MYSQL_PASSWORD: userpassword  # MySQL user password
+    ports:
+      - "3306:3306"  # Expose MySQL on port 3306
+    volumes:
+      - mysql-data:/var/lib/mysql  # Persist data
+      - /home/favas/E-commerce-springboot-project/JtProject/your-database-file.sql:/docker-entrypoint-initdb.d/your-database-file.sql  # Mount SQL file from the correct folder
+
+volumes:
+  mysql-data:
+
